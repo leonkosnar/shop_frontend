@@ -19,6 +19,10 @@ function initAnimations(){
 
 function filter(elmnt, category){
     console.log(elmnt);
+    Array.from(elmnt.parentElement.querySelectorAll('li')).forEach(filter => {
+        filter.classList.remove('active');
+    });
+    elmnt.classList.add('active');
     Array.from(elmnt.parentElement.parentElement.querySelector('.filter-container-items').children).forEach(item => {
         if(category !== 'all' && !Array.from(item.classList).includes(category)){ item.classList.add('hidden'); }
         else{ item.classList.remove('hidden'); }

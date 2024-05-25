@@ -56,8 +56,16 @@ body {
 .grid-item {
   position: relative;
   display: block;
+  border-radius: 8px;
+  overflow: hidden;
   opacity: 1;
   transition: display 0s, opacity 0.5s linear;
+  transition: scale .2s, filter .3s;
+}
+.grid-item:hover {
+  scale: 1.02;
+  border-radius: 10px;
+  filter: drop-shadow(0px 0px 5px rgba(0, 255 0, .3));
 }
 .grid-item.hidden{
     display: none;
@@ -96,6 +104,9 @@ body {
     width: max-content;
     animation: scroll-h 60s linear infinite;
 }
+[data-animated="true"] .h-scroll-wrapper:has(.grid-item:hover){
+    animation-play-state: paused;
+}
 .h-scroll-container[data-animated="true"] {
   overflow: hidden;
   -webkit-mask: linear-gradient(
@@ -131,13 +142,6 @@ body {
   gap: 1rem;
 }
 
-.flex-item {
-  flex: 1 1 calc(25% - 1rem);
-  background: #f0f0f0;
-  padding: 1rem;
-  text-align: center;
-}
-
 .filter-container{
     display: flex;
     flex-flow: row wrap;
@@ -158,8 +162,10 @@ body {
 
     transition: flex .5s ease-in-out;
 }
-.filter-container>li:hover, .filter-container>li:active{
+.filter-container>li:hover, .filter-container>li.active{
     flex: 2;
+    background-color: #aaf;
+
 }
 
 @media (max-width: 768px) {
