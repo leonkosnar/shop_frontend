@@ -18,7 +18,6 @@ function initAnimations(){
 }
 
 function filter(elmnt, category){
-    console.log(elmnt);
     Array.from(elmnt.parentElement.querySelectorAll('li')).forEach(filter => {
         filter.classList.remove('active');
     });
