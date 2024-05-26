@@ -59,11 +59,9 @@ body {
   border-radius: 8px;
   overflow: hidden;
   opacity: 1;
-  transition: display 0s, opacity 0.5s linear;
-  transition: scale .2s, filter .3s;
+  transition: display 0s, opacity 0.5s linear, scale .2s, filter .3s;
 }
 .grid-item:hover {
-  scale: 1.02;
   border-radius: 10px;
   filter: drop-shadow(0px 0px 5px rgba(0, 255 0, .3));
 }
@@ -74,7 +72,10 @@ body {
 
 .grid-item img {
   width: 100%;
-  height: auto;
+  transition: scale .2s;
+}
+.grid-item:hover img {
+  scale: 1.1;
 }
 
 .grid-item .overlay {
@@ -95,7 +96,7 @@ body {
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
-  padding: block 2rem;
+  padding: 2rem;
   list-style-type: none;
   overflow: auto;
 }
@@ -106,6 +107,9 @@ body {
 }
 [data-animated="true"] .h-scroll-wrapper:has(.grid-item:hover){
     animation-play-state: paused;
+}
+.h-scroll-wrapper img{
+    height: 300px;
 }
 .h-scroll-container[data-animated="true"] {
   overflow: hidden;
@@ -152,21 +156,16 @@ body {
 }
 .filter-container>li{
     flex: 1;
-
     background-color: #aaa;
     color: white;
     font-weight: bold;
     text-align: center;
     border-radius: 5px;
     padding: 1rem .5rem;
-
     transition: flex .5s ease-in-out;
 }
-.filter-container>li:hover, .filter-container>li.active{
-    flex: 2;
-    background-color: #aaf;
-
-}
+.filter-container>li:hover{background-color: #aaf;}
+.filter-container>li.active{flex: 2;}
 
 @media (max-width: 768px) {
   .flex-item {
